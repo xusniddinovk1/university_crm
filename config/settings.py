@@ -18,9 +18,42 @@ INSTALLED_APPS = [
 
     'crm_app',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
+AUTH_USER_MODEL = 'crm_app.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+}
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),  # Access token muddati 30 daqiqa
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # Refresh token muddati 7 kun
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "BLACKLIST_AFTER_ROTATION": True,
+}
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': 'Format: Bearer <token>',
+        }
+    },
+}
+AUTHENTICATION_BACKENDS = [
+    'crm_app.authentication.PhoneBackend',  # <-- to‘liq yo‘l bo‘lishi kerak
+    'django.contrib.auth.backends.ModelBackend',
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

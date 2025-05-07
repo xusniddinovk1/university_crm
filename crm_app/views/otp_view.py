@@ -2,9 +2,6 @@ import pyotp
 import pyotp
 from django.core import cache
 from django.core.cache import cache
-from django_otp.plugins.otp_totp.models import TOTPDevice
-from django_otp.plugins.otp_totp.models import TOTPDevice
-from django_otp.plugins.otp_totp.models import TOTPDevice
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -87,6 +84,7 @@ class PhoneSendOTP(APIView):
                     return Response({"message": "SMS sent successfully"}, status=status.HTTP_200_OK)
 
                 return Response({"message": "Failed to send SMS"}, status=status.HTTP_400_BAD_REQUEST)
+        return None
 
 
 import random
