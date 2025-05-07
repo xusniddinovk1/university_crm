@@ -3,6 +3,7 @@ from crm_app.models import Student, Teacher, User
 
 
 class Homework(models.Model):  # Teacher
+    objects = None
     title = models.CharField(max_length=255)
     student = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField(blank=True)
@@ -17,6 +18,7 @@ class Homework(models.Model):  # Teacher
 
 
 class HomeworkSubmission(models.Model):  # Student
+    objects = None
     homework = models.ForeignKey(Homework, on_delete=models.CASCADE, related_name='submissions')
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='homework_submissions')
     file = models.FileField(upload_to='homework_submissions/')

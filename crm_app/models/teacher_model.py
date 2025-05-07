@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Course(BaseModel):
+    objects = None
     title = models.CharField(max_length=50)
     descriptions = models.CharField(max_length=500, null=True, blank=True)
 
@@ -11,6 +12,7 @@ class Course(BaseModel):
 
 
 class Departments(BaseModel):
+    objects = None
     title = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
     descriptions = models.CharField(max_length=500, null=True, blank=True)
@@ -20,6 +22,7 @@ class Departments(BaseModel):
 
 
 class Teacher(BaseModel):
+    objects = None
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='teacher_profile')
     departments = models.ManyToManyField(Departments, related_name="teachers")
     course = models.ManyToManyField(Course, related_name="teachers")

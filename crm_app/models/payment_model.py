@@ -3,6 +3,7 @@ from .student_model import Student
 
 
 class Payment(models.Model):
+    objects = None
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='payments')
     amount = models.DecimalField(max_digits=10, decimal_places=2)  # To'lov miqdori
     date = models.DateField(auto_now_add=True)  # To'lov sanasi
