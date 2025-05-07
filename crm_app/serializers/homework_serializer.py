@@ -1,7 +1,6 @@
-# serializers.py
 from rest_framework import serializers
 from ..models import Homework, HomeworkSubmission
-from configapp.models import Teacher
+from crm_app.models import Teacher
 
 class HomeworkSerializer(serializers.ModelSerializer):
     is_submitted = serializers.SerializerMethodField()
