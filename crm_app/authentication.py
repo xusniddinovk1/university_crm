@@ -9,5 +9,6 @@ class PhoneBackend(BaseBackend):
             user = User.objects.get(phone_number=phone_number)
             if user.check_password(password):
                 return user
+            return None
         except User.DoesNotExist:
             return None
