@@ -69,26 +69,6 @@ class DayViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated, IsAdminOrStaff]  # Bu ViewSet uchun ruxsati borlar
 
 
-# Rooms uchun
-class RoomsViewSet(ModelViewSet):
-    queryset = Rooms.objects.all()  # Barcha Roomsni olish
-    serializer_class = RoomsSerializer  # Rooms uchun serializer
-    permission_classes = [IsAuthenticated, IsAdminOrStaff]  # Bu ViewSet uchun ruxsati borlar
-
-
-# TableType uchun
-class TableTypeViewSet(ModelViewSet):
-    queryset = TableType.objects.all()  # Barcha TableTypeni olish
-    serializer_class = TableTypeSerializer  # TableType uchun serializer
-    permission_classes = [IsAuthenticated, IsAdminOrStaff]  # Bu ViewSet uchun ruxsati borlar
-
-
-# Table uchun
-class TableViewSet(ModelViewSet):
-    queryset = Table.objects.all()  # Barcha Tableni olish
-    serializer_class = TableSerializer  # Table uchun serializer
-    permission_classes = [IsAuthenticated, IsAdminOrStaff]  # Bu ViewSet uchun ruxsati borlar
-
 
 class GroupStudentViewSet(viewsets.ModelViewSet):
     queryset = GroupStudent.objects.all()
