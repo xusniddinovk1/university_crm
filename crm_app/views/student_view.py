@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from ..models import Student, Parents
 from ..serializers import StudentSerializer, ParentsSerializer
-from ..permissions import IsAdminOrStaff, IsTeacherOfGroup
+from ..permissions import IsAdminOrStaff
 
 # Studentni olish
 class StudentListView(APIView):
