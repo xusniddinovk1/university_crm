@@ -4,7 +4,7 @@ from ..models import User
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    is_staff = serializers.BooleanField(default=False)  # ← is_staff default False qilib berish
+    is_staff = serializers.BooleanField(default=False)
 
     class Meta:
         model = User
@@ -12,9 +12,9 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         password = validated_data.pop('password')
-        is_staff = validated_data.pop('is_staff', True)  # ← bu qo‘shilishi kerak
+        is_staff = validated_data.pop('is_staff', True)
         user = User.objects.create(**validated_data)
         user.set_password(password)
-        user.is_staff = is_staff  # ← bu alohida belgilanadi
+        user.is_staff = is_staff
         user.save()
         return user

@@ -2,16 +2,16 @@ from .user_serializer import *
 from ..models import Departments, Course, Teacher
 
 
-class DepartmentSerializer(serializers.ModelSerializer):  # Department uchun Serializers:
+class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Departments  # Model nomi
-        fields = ['id', 'title', 'is_active', 'descriptions']  # Serializatsiya qilinadigan maydonlar
+        fields = ['id', 'descriptions', 'title', 'is_active']
 
 
-class CourseSerializer(serializers.ModelSerializer):  # Course uchun Serialzier
+class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course  # Model nomi
-        fields = ['id', 'title', 'descriptions']  # Seriyalizatsiya qilinadigan maydonlar
+        fields = ['id', 'title', 'descriptions']
 
 
 class TeacherSerializer(serializers.ModelSerializer):

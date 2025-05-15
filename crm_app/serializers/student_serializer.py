@@ -11,12 +11,12 @@ class StudentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')
-        groups = validated_data.pop('group', [])  # groupni alohida ajratib olamiz
+        groups = validated_data.pop('group', [])
 
         user = UserSerializer().create(user_data)
         student = Student.objects.create(user=user, **validated_data)
 
-        student.group.set(groups)  # grouplarga set() orqali qo‘shamiz
+        student.group.set(groups)  # (add groups bt set() function)
         return student
 
     def update(self, instance, validated_data):
@@ -26,7 +26,6 @@ class StudentSerializer(serializers.ModelSerializer):
             UserSerializer().update(instance.user, user_data)
 
         for attr, value in validated_data.items():
-            # ManyToManyField uchun alohida ishlov beramiz
             field = instance._meta.get_field(attr)
             if field.many_to_many:
                 getattr(instance, attr).set(value)
@@ -37,9 +36,7 @@ class StudentSerializer(serializers.ModelSerializer):
         return instance
 
 
-# Parents modeli uchun serializer
 class ParentsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Parents  # Qaysi model bilan ishlashini ko‘rsatadi
-        # Seriyalizatsiya qilinadigan maydonlar
-        fields = ['id', 'student', 'full_name', 'phone_number', 'address', 'descriptions']
+        model = Parents
+        fields = ['id', 'descriptions', 'student', 'full_name', 'phone_number', 'address']

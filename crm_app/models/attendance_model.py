@@ -14,7 +14,7 @@ class Attendance(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='absent')
 
     class Meta:
-        unique_together = ('student', 'group', 'date')  # Bir kunga bitta yozuv bo‘lsin
+        unique_together = ('student', 'group', 'date')
         verbose_name = 'Davomat'
         verbose_name_plural = 'Davomatlar'
 
