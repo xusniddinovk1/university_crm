@@ -20,3 +20,5 @@ def send_telegram_notification(payment_id, quantity, student_username, phone_num
         url=f'https://api.telegram.org/bot{token}/{method}',
         data={'chat_id': os.getenv('CHAT_ID', ''), 'text': message_text}
     ).json()
+
+    print("Telegram API response:", response.status_code, response.text)

@@ -10,6 +10,6 @@ def notify_admin(sender, instance, created, **kwargs):
         send_telegram_notification.delay(
             payment_id=instance.id,
             quantity=instance.amount,
-            student_username=instance.student.username,
-            phone_number=instance.phone_number
+            student_username=instance.student.user.username,
+            phone_number=instance.student.user.phone_number
         )
