@@ -37,11 +37,9 @@ class StudentSerializer(serializers.ModelSerializer):
         return instance
 
 
-
 # Parents modeli uchun serializer
 class ParentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Parents  # Qaysi model bilan ishlashini ko‘rsatadi
         # Seriyalizatsiya qilinadigan maydonlar
         fields = ['id', 'student', 'full_name', 'phone_number', 'address', 'descriptions']
-

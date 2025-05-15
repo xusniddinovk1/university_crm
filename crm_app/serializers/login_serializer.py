@@ -50,12 +50,3 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['old_password', 'new_password', 're_new_password']
-
-
-class SMSSerializer(serializers.Serializer):
-    phone_number = serializers.CharField()
-
-
-class VerifySMSSerializer(serializers.Serializer):
-    phone_number = serializers.CharField()
-    otp_code = serializers.CharField()  # OTP uchun maydon qo'shildi

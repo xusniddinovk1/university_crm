@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from ..models import Teacher
 from ..serializers import TeacherSerializer
-from ..permissions import IsAdminOrStaff, IsTeacherOfGroup
+from ..permissions import IsAdminOrStaff
 from rest_framework.permissions import IsAuthenticated
 
 
