@@ -1,4 +1,3 @@
-from django.db import models
 from .group_model import *
 
 
