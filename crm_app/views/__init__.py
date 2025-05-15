@@ -1,4 +1,3 @@
-from .otp_view import *
 from .group_view import *
 from .teacher_view import *
 from .payment_view import *
